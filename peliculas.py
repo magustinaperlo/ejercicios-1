@@ -1,5 +1,6 @@
 from cgitb import text
-from tkinter import * 
+from tkinter import *
+from tkinter import messagebox 
 
 
 ventana = Tk()
@@ -9,9 +10,19 @@ ventana.config(bg="black", padx=100, pady= 40)
 
 
 
+# def añadir():
+#     lista.insert(END,listaPelis.get())
+#     borrar()
+
 def añadir():
-    lista.insert(END,listaPelis.get())
-    borrar()
+    a = pantalla.get() #Se obtiene valor en Entry
+   #validamos el ingreso para no almacenar datos erróneos
+    if (a.isspace() or len(a) <= 1):
+        messagebox.showinfo(message="El nombre de la película no debe comenzar con un espacio", title="Error")
+        pantalla.delete(0, END)
+    else:
+        lista.insert(END, a) #Se inserta en Listbox
+        pantalla.delete(0, END) #Se limpia el campo
     
 def borrar():
     listaPelis.set("")
