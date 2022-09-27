@@ -44,14 +44,14 @@ num2.grid(row=1, column=0,pady= 10)
 num_gen = Label (ventana, text="numero generado", font= "arial 9", background="black", foreground="white")
 num_gen.grid(row=2, column=0,pady= 10)
 
-
-spin1 = Spinbox(ventana, from_= -100, to= 1000, textvariable= n1)
+#se añade el state readonly para que el usuario no tenga la posibilidad de ingresar valores manualmente y solo lo haga desde los spinbox
+spin1 = Spinbox(ventana, from_= -100, to= 1000, textvariable= n1, state= "readonly")
 spin1.grid(row = 0, column = 1,pady= 10)
 
-spin2 = Spinbox(ventana, from_= -100, to= 1000, textvariable= n2)
+spin2 = Spinbox(ventana, from_= -100, to= 1000, textvariable= n2,state= "readonly")
 spin2.grid(row = 1, column = 1,pady= 10)
 
-randomm = Label (ventana, textvariable= ngenerado, font= "arial 9", background="white", foreground="black", width= 18, height=1)
+randomm = Label (ventana, textvariable= ngenerado, font= "arial 9", background="white", foreground="black", width= 18, height=1,state= "readonly")
 randomm.grid(row=2, column=1,pady= 10)
 
 
