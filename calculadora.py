@@ -1,5 +1,6 @@
 from distutils.command.clean import clean
 from tkinter import *
+from tkinter import messagebox
 from turtle import right
 import tkinter as tk
 
@@ -13,6 +14,13 @@ into = IntVar()
 into2= IntVar()
 
 
+def validar():
+    try:
+        valor1=pantalla1.get()
+        valor2 = pantalla2.get()
+    except:
+        messagebox.showwarning("Error","Debe ingresar dos valores numericos")
+
 def suma():
     suma = float(pantalla1.get()) + float(pantalla2.get())
     return var.set(suma)
@@ -21,9 +29,18 @@ def multiplicacion():
     multiplicacion = float(pantalla1.get()) * float(pantalla2.get())
     return var.set(multiplicacion)
 
-def divicion():
-    divicion = float(pantalla1.get()) / float(pantalla2.get())
-    return var.set(divicion)
+# def divicion():
+#     divicion = float(pantalla1.get()) / float(pantalla2.get())
+#     return var.set(divicion)
+
+def division():
+    validar()
+    if int(pantalla2.get())!=0:
+        dividir=pantalla1.get()/pantalla2.get()
+        return result.set(dividir)
+    else:
+        return messagebox.showerror ("Error", "No es posible dividir por 0")
+    limpiar()
 
 def resta():
     resta = float(pantalla1.get()) - float(pantalla2.get())
@@ -75,7 +92,7 @@ boton_porcentaje.grid(row=6, column= 0, padx= 10, pady= 15)
 boton_menos= Button(ventana, text="-", width= 17, height=1, command= resta)
 boton_menos.grid(row=4, column= 1, padx= 10, pady= 15)
 
-boton_div= Button(ventana, text="/", width= 17, height=1, command= divicion)
+boton_div= Button(ventana, text="/", width= 17, height=1, command= division)
 boton_div.grid(row=5, column= 1, padx= 10, pady= 15)
 
 boton_clear= Button(ventana, text="CLEAR", width= 17, height=1, command= clear)
