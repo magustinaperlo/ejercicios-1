@@ -1,6 +1,7 @@
 from multiprocessing.sharedctypes import Value
 from select import select
 from tkinter import *
+from tkinter import messagebox
 from turtle import right
 import tkinter as tk
 
@@ -9,6 +10,17 @@ ventana.title("calculadora 2")
 ventana.config(bg="black", padx=10, pady= 10)
 opcion = IntVar()
 var = StringVar()
+
+def validar():
+        valor1=float(num1.get())
+        valor2 = float(num2.get())
+        if (valor2<1):
+            messagebox.showwarning("Error","No es posible dividir por cero")
+           
+        else:
+            dividir = float(valor1) / float(valor2)
+            return var.set(dividir)
+ 
 
 def todo():
     
@@ -23,8 +35,8 @@ def todo():
          multiplicar = float(num1.get()) * float(num2.get())
          return var.set(multiplicar)
     if op== 4:
-         dividir = float(num1.get()) / float(num2.get())
-         return var.set(dividir)
+         validar()
+        
 
     
     
